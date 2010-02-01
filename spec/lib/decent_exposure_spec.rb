@@ -26,7 +26,7 @@ describe DecentExposure do
     end
 
     it "prevents the method from being a callable action" do
-      Quacker.expects(:hide_action).with(:blerg)
+      Quacker.expects(:hide_action).twice
       Quacker.class_eval do
         expose(:blerg){ 'ehm' }
       end
@@ -34,7 +34,7 @@ describe DecentExposure do
 
     it "declares the method as a helper method" do
       Quacker.stubs(:hide_action)
-      Quacker.expects(:helper_method).with(:blarg)
+      Quacker.expects(:helper_method).twice
       Quacker.class_eval do
         expose(:blarg){ 'uhm' }
       end
